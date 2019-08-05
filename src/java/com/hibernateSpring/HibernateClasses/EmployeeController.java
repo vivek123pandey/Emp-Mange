@@ -47,8 +47,15 @@ public class EmployeeController {
         return new ModelAndView("index");  
     }
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public void updateEmployee(){
-        
+    public ModelAndView updateEmployee(@ModelAttribute EmployeeDTO empdto, HttpSession session, ModelAndView m){
+        LoginRegisterDTO login = (LoginRegisterDTO)session.getAttribute("loginInfo");
+        empdto.setAddedBy(login.getUsername());
+        empdto.setAddedEmpType(login.getEmptype());
+        if(empdto.getId()!=0){
+        employeeService.updateEmployee(empdto);
+        }
+        m.setViewName("forward:/listallemp");
+        return m;
     }
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public void deleteEmployee(){

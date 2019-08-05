@@ -21,6 +21,7 @@ $(document).ready(function () {
     toggleLoginLogout();
     upDownSymbol();
     initalizeDataTable();
+    openUrlWithClickByJquery()
 });
 
 function basicViewValidation() {
@@ -33,7 +34,7 @@ function basicViewValidation() {
         $("#collapse1").hide();
         $("#withoutsession").show();
     }
-    if (!$("#checkbox1").length) {
+   else if (!$("#checkbox1").length) {
         $("#collapse1").hide();
         $("#aftertablehide").show();
     }
@@ -99,5 +100,12 @@ function upDownSymbol() {
 function initalizeDataTable() {
     $("#table").DataTable();
 }
-
+function openUrlWithClickByJquery(){
+  
+    $(".inputUrl").click(function(r){
+        if(r){
+         window.open("http://localhost:8080/Emp_Management", "Open New Url", "width=200,height=200");     
+        }
+    });
+}
 

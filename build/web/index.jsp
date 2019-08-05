@@ -54,6 +54,7 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <a class="navbar-brand" href="">Employee Demo</a>
+                                <!--<input type="button" class="inputUrl" value="Open New">-->
                             </div>
                             <!--              Collect the nav links, forms, and other content for toggling-->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -193,7 +194,7 @@
                                 <div id="editEmployeeModal<%=hbd.getId()%>" class="modal fade">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <form action="HibernateServletEdit" method="post">
+                                            <form action="update" method="post">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Edit Employee</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
