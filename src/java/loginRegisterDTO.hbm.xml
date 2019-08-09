@@ -47,5 +47,6 @@ Contributor(s):
     <property name="email"/>
     <property name="emptype"/>
     <property name="joindate"/>
+     <property name="adminrole"/>
   </class>
 </hibernate-mapping>

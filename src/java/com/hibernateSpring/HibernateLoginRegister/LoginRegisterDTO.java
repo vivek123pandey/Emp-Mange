@@ -21,6 +21,7 @@ public class LoginRegisterDTO {
    private String email;
    private Date joindate;
    private String emptype;
+   private String adminrole;
    private List<EmployeeDTO> hibernatedata;
 
   public List<EmployeeDTO> getHibernatedata() {
@@ -70,4 +71,12 @@ public class LoginRegisterDTO {
   public void setEmptype(String emptype) {
     this.emptype = emptype;
   }
+
+    public String getAdminrole() {
+        return adminrole;
+    }
+
+    public void setAdminrole(String adminrole) {
+        this.adminrole = adminrole;
+    }
 }
