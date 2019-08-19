@@ -22,65 +22,74 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class EmployeeController {
-    LoginRegisterDTO loginregister=null;
+
+    LoginRegisterDTO loginregister = null;
     @Autowired
     private EmployeeService employeeService;
-     
-    @RequestMapping(value = "/add", method = RequestMethod.POST  )
-    public ModelAndView addEmp(@ModelAttribute EmployeeDTO empdto, HttpSession session, ModelAndView m){
-      LoginRegisterDTO login = (LoginRegisterDTO) session.getAttribute("loginInfo");
-     empdto.setAddedBy(login.getUsername());
-     empdto.setAddedEmpType(login.getEmptype());
-       if( empdto.getId()==0){
-            employeeService.addEmp(empdto);
-       }
-        m.setViewName("forward:/listallemp");
-      return m ;
-    }
-    @RequestMapping(value = "/listallemp", method = RequestMethod.POST)
-    public ModelAndView listAllEmployee( HttpSession session, HttpServletRequest request, ModelAndView m){ 
-        if(session.getAttribute("loginInfo")!=null){
-        List<EmployeeDTO> listdto = employeeService.listAllEmployee();
-        session.setAttribute("listdto", listdto);
-        m.setViewName("index");
-        return m;
-        }else
-            m.addObject("msg", "You are not Login Currently!!!!!");
-            m.setViewName("index");
-        return  m; 
-    }
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ModelAndView updateEmployee(@ModelAttribute EmployeeDTO empdto, HttpSession session, ModelAndView m){
-        LoginRegisterDTO login = (LoginRegisterDTO)session.getAttribute("loginInfo");
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ModelAndView addEmp(@ModelAttribute EmployeeDTO empdto, HttpSession session, ModelAndView m) {
+        LoginRegisterDTO login = (LoginRegisterDTO) session.getAttribute("loginInfo");
         empdto.setAddedBy(login.getUsername());
         empdto.setAddedEmpType(login.getEmptype());
-        if(empdto.getId()!=0){
-        employeeService.updateEmployee(empdto);
+        if (empdto.getId() == 0) {
+            employeeService.addEmp(empdto);
         }
         m.setViewName("forward:/listallemp");
         return m;
     }
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public void deleteEmployee(){
-        
+
+    @RequestMapping(value = "/listallemp", method = RequestMethod.POST)
+    public ModelAndView listAllEmployee(HttpSession session, HttpServletRequest request, ModelAndView m) {
+        if (session.getAttribute("loginInfo") != null) {
+            List<EmployeeDTO> listdto = employeeService.listAllEmployee();
+            session.setAttribute("listdto", listdto);
+            m.setViewName("index");
+            return m;
+        } else {
+            m.addObject("msg", "You are not Login Currently!!!!!");
+        }
+        m.setViewName("index");
+        return m;
     }
-    @RequestMapping(value = "/login", method = RequestMethod.POST )
-    public ModelAndView login(HttpServletRequest request, HttpSession session, ModelAndView m){
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ModelAndView updateEmployee(@ModelAttribute EmployeeDTO empdto, HttpSession session, ModelAndView m) {
+        LoginRegisterDTO login = (LoginRegisterDTO) session.getAttribute("loginInfo");
+        empdto.setAddedBy(login.getUsername());
+        empdto.setAddedEmpType(login.getEmptype());
+        if (empdto.getId() != 0) {
+            employeeService.updateEmployee(empdto);
+        }
+        m.setViewName("forward:/listallemp");
+        return m;
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public ModelAndView deleteEmployee(HttpServletRequest request, HttpSession session, ModelAndView m) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        employeeService.deleteEmployee(id);
+        m.setViewName("forward:/listallemp");
+        return m;
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView login(HttpServletRequest request, HttpSession session, ModelAndView m) {
         LoginRegisterDTO loginregisterdto = new LoginRegisterDTO();
         loginregisterdto.setUsername(request.getParameter("uname"));
         loginregisterdto.setPassword(request.getParameter("password"));
         loginregisterdto.setEmptype(request.getParameter("emptype"));
-       loginregisterdto = employeeService.login(loginregisterdto);
-       session.setAttribute("loginInfo", loginregisterdto);
-       m.addObject("loginInfo", loginregisterdto);
-       m.setViewName("forward:/listallemp");
+        loginregisterdto = employeeService.login(loginregisterdto);
+        session.setAttribute("loginInfo", loginregisterdto);
+        m.addObject("loginInfo", loginregisterdto);
+        m.setViewName("forward:/listallemp");
         return m;
     }
+
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView register(LoginRegisterDTO loginregisterdto){
+    public ModelAndView register(LoginRegisterDTO loginregisterdto) {
         employeeService.register(loginregisterdto);
-    return new ModelAndView("/index");
+        return new ModelAndView("/index");
     }
-    
-   
+
 }
