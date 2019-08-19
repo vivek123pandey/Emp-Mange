@@ -3,6 +3,7 @@
     Created on : Mar 6, 2019, 3:47:05 PM
     Author     : vivek.pandey
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="com.hibernateSpring.HibernateClasses.EmployeeController"%>
 <%@page import="com.hibernateSpring.HibernateLoginRegister.LoginRegisterDTO"%>
 <%@page import="com.hibernateSpring.HibernateClasses.EmployeeDTO"%>
@@ -104,6 +105,7 @@
                     </div>
                 </div>
                 <label></label>
+                <label> <c:out value="${msg}" ></c:out></label>
                 <label class="pagelabel text-danger" id="withoutsession">Unable to access data before login, To veiw data please login</label>
                 <label class="pagelabel text-warning" id="aftertablehide">NO Record In Database Table !!!!</label>
                 <div id="collapse1" class="table-responsive panel-collapse">
@@ -169,7 +171,7 @@
                                 <div id="deleteEmployeeModal<%=hbd.getId()%>" class="modal fade">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <form action="HibernateServletDelete" method="post">
+                                            <form action="delete" method="post">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Delete Employee</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -326,7 +328,7 @@
     <div id="registerEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="register" method="post">
+                <form action="addAdmin" method="post">
                     <div class="modal-header bg-primary">
                         <h4 class="modal-title">Register Employee</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
