@@ -11,6 +11,7 @@ $(document).ready(function () {
     $("#withoutsession").hide();
     $("#aftertablehide").hide();
     $(".admmincol").hide();
+    $(".print").hide();
     uname = $("#username").text();
     emptype = $("#emptype").text();
     $('[data-toggle="tooltip"]').tooltip();
@@ -33,6 +34,7 @@ function basicViewValidation() {
     if (uname == "null") {
         $("#collapse1").hide();
         $("#withoutsession").show();
+        $(".print").show();
     }
    else if (!$("#checkbox1").length) {
         $("#collapse1").hide();
@@ -98,7 +100,7 @@ function upDownSymbol() {
     });
 }
 function initalizeDataTable() {
-    $("#table").DataTable();
+    $("#user-table").DataTable()
 }
 function openUrlWithClickByJquery(){
   
@@ -108,4 +110,3 @@ function openUrlWithClickByJquery(){
         }
     });
 }
-

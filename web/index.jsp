@@ -21,7 +21,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="resource/css/datatables.css">
         <link rel="stylesheet" href="resource/css/datatables.min.css">
+        <link rel="stylesheet" href="resource/css/dataTableCustomisation.css">
+        <link rel="stylesheet" href="resource/css/print.css">
         <link rel="stylesheet" href="resource/css/hibernateEmployee.css">
 
     </head>
@@ -55,7 +58,7 @@
                                     <span class="icon-bar"></span>
                                 </button>
                                 <a class="navbar-brand" href="">Employee Demo</a>
-                                <!--<input type="button" class="inputUrl" value="Open New">-->
+                                <input type="button" class="inputUrl" value="Open New">
                             </div>
                             <!--              Collect the nav links, forms, and other content for toggling-->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -109,27 +112,12 @@
                 <label class="pagelabel text-danger" id="withoutsession">Unable to access data before login, To veiw data please login</label>
                 <label class="pagelabel text-warning" id="aftertablehide">NO Record In Database Table !!!!</label>
                 <div id="collapse1" class="table-responsive panel-collapse">
-                    <div class="dropdown">
-                        <button class="btn btn-info dropdown-toggle padded" type="button" data-toggle="dropdown">Records Per Page<span class="caret"></span></button>
-                        <ul class="dropdown-menu padded">
-                            <li><a href="index.jsp?noOfRecordPerPage=5">5</a></li>
-                            <li><a href="index.jsp?noOfRecordPerPage=10">10</a></li>
-                            <li><a href="index.jsp?noOfRecordPerPage=15">15</a></li>
-                            <li><a id="dropdown" href="index.jsp?noOfRecordPerPage=20">All</a></li>
-                        </ul>
-                    </div>
                     <!--panel body section-->
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover table-condensed" id="table">
                                 <thead>
                                     <tr class="bg-info">
-                                        <!--                    <th>
-                                                              <span class="custom-checkbox">
-                                                                <input type="checkbox" id="selectAll">
-                                                                <label for="selectAll"></label>
-                                                              </span>
-                                                            </th>-->
                                         <th>id</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -141,20 +129,15 @@
 
                                     </tr>
                                 </thead>
+                                <tbody id="checkbox1">
                                 <%
                                     if (emptype != null) {
                                         List<EmployeeDTO> list = (List<EmployeeDTO>) session.getAttribute("listdto");
                                         if (list != null) {
                                             for (EmployeeDTO hbd : list) {
                                 %>
-                                <tbody id="checkbox1">
+                                
                                     <tr>
-                                        <!--                    <td>
-                                                              <span class="custom-checkbox">
-                                                                <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                                <label for="checkbox1"></label>
-                                                              </span>
-                                                            </td>-->
                                         <td><%=hbd.getId()%></td>
                                         <td><%=hbd.getName()%></td>
                                         <td><%=hbd.getEmail()%></td>
@@ -239,32 +222,19 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
-                                </tbody>
+                                </div>                              
                                 <%
                                             }
                                         }
                                     }
                                 %>
-
+                               </tbody>
                             </table>
-                        </div>
-                    </div>
-                    <div  class="panel-footer">
-                        <div class="row">
-                            <div  id="clearfix" class="clearfix">
-                                <ul class="pagination">
-                                    <li  class="page-item disabled"><a href="#">Previous</a></li>
-                                        <% for (int i = 1; i <= str; i++) {%>
-                                    <li id="pageLink" class="page-item"><a href="index.jsp?pageNumber=<%=i%>" class="page-link"><%=i%></a></li>
-                                        <%}%>
-                                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+                               <input type="button" class="print no-print" onclick="window.print()" value="print">              
         </div>
         <!-- login Modal HTML -->
         <div id="loginEmployeeModal" class="modal fade">
@@ -282,7 +252,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" name="password" class="form-control" required>
+                                <input type="password" name="password" autocomplete="current-password" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Emp Type</label>
@@ -340,7 +310,7 @@
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="password" value="" class="form-control" required>
+                            <input type="password" name="password" autocomplete="current-password" value="" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
@@ -429,8 +399,10 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.js"></script>-->
     <script src="resource/js/datatables.min.js"></script>
-    <script type="text/javascript" src="resource/js/appPage.js"></script>
+    <script src="resource/js/datatables.js"></script>
+    <script type="text/javascript" src="resource/js/appPage.js"></script>  
 </body>
 
 </html>
