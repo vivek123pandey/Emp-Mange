@@ -1,3 +1,10 @@
+# Ignore directories with generated output
+*.build
+*.target
+*.bin
+*.work
+*.dist
+
 # Compiled class file
 *.class
 
