@@ -247,12 +247,14 @@ a.updownarrow:active{
   text-decoration: none;
  
 }
+
 .padded{
  margin-left: 18px;
 }
 .hidden{
     display: none;
 }
-.print{
- 
+
+.backend-data{
+    display: none;
 }

@@ -1,0 +1,87 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 26, 2019, 1:28:10 PM
+    Author     : vivek.pandey
+*/
+.side-bar{
+    width: 200px;   
+}
+.footer {
+    background-color: black;
+    height: 50px;
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 100px;
+}
+.hpylink{
+    height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+       
+}
+
+.head-bar{
+    width: 1148px;
+    float: right;
+    margin-top: -517px;
+    height: 40px;
+    border-bottom: 0px;
+    box-shadow: 0px 0px 4px grey;
+    border-radius: 0px;
+}
+.content{
+    margin-top: -22px;
+}
+.nav.main-menu li{
+   border: 0px solid #ffffff;
+   box-shadow: 0px 1px 1px #666;
+   font-size: 14px;  
+   font-weight: bold;
+}
+
+.nav.main-menu li a{
+ color: #666;
+ padding: 20px 20px;
+ padding-left: 35px;
+ font-family: 'Open Sans', sans-serif;
+}
+
+.nav.main-menu li a:hover{
+   padding: 20px 20px;
+   padding-left: 35px;
+}
+
+.custom-nav{
+    height: 500px;
+    border-top-left-radius: 0px;
+}
+.page-content{
+    float: right;
+    width: 80%;
+    margin-top: -460px;
+    margin-right: 20px;
+}
+.custom-container{
+    height: 20px;
+}
+
+.welcom-text{
+    padding: 10px 15px;
+    font-size: 20px;
+}
+.glyphicon.glyphicon-wrench{
+  -webkit-transition: width 2s, height 2s, -webkit-transform 2s;  
+   transition: width 2s, height 2s, transform 2s;
+}
+.glyphicon.glyphicon-wrench{
+  -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+}
+
+

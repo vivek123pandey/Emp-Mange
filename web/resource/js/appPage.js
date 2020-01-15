@@ -5,7 +5,7 @@
  */
 var uname = null;
 var emptype = null;
-
+var jsMap;
 $(document).ready(function () {
      $("#logout").hide();
     $("#withoutsession").hide();
@@ -14,15 +14,18 @@ $(document).ready(function () {
     $(".print").hide();
     uname = $("#username").text();
     emptype = $("#emptype").text();
-    $('[data-toggle="tooltip"]').tooltip();
-   
+//    $('[data-toggle="tooltip"]').tooltip();
+
     basicViewValidation();
     changeUrlForAddEmp();
     checkboxSelection();
     toggleLoginLogout();
     upDownSymbol();
     initalizeDataTable();
-    openUrlWithClickByJquery()
+    openUrlWithClickByJquery();
+    getDynamicJs();
+    getMapVal();
+     var ev = eval("jsMap");
 });
 
 function basicViewValidation() {
@@ -110,3 +113,24 @@ function openUrlWithClickByJquery(){
         }
     });
 }
+
+function getDynamicJs(){
+    var mapValue = $(".dynamicJs").text();
+   var map = new Map();
+ var  map1 = mapValue.split("{");
+ map1 = map1[1].split("}");
+  var first = map1[0].split(",");
+  for(var i = 0; i<=first.length-1;i++){
+      var sec = first[i].split("=");
+     map.set(sec[0].trim(),sec[1].trim());
+  }
+   return map;
+}
+
+  function getMapVal(){
+      jsMap = new Map();
+      jsMap = getDynamicJs();
+      var group1Div = new Array(3);
+      jsMap.set("group1Div",group1Div);
+  }
+  
