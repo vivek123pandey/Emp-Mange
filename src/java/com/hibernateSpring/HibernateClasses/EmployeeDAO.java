@@ -6,7 +6,9 @@
 package com.hibernateSpring.HibernateClasses;
 
 import com.hibernateSpring.HibernateLoginRegister.LoginRegisterDTO;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -61,6 +63,21 @@ public class EmployeeDAO {
         //
     public void register(LoginRegisterDTO loginregisterdto) {
         
+    }
+    
+     public Map dynamicJs(){
+        Map dynamicJsValue = new HashMap();
+        String [] arrEle = new String[3];
+        arrEle[0]="ram";
+       arrEle[1] = "shyam";
+       arrEle[2] = "shubh";
+        dynamicJsValue.put("group0", "0013");
+        dynamicJsValue.put("group1", "GPI");
+        dynamicJsValue.put("group3", "RGT");
+        dynamicJsValue.put("group0Div0", "abddddd");
+        dynamicJsValue.put("group1Div0", "sdffsdfsdsdfsdfsdfsdf");
+         dynamicJsValue.put("groupArray", arrEle);
+        return dynamicJsValue;
     }
 
 }
